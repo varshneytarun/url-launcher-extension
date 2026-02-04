@@ -3,7 +3,7 @@
 **Last updated:** February 4, 2025
 
 ## Overview
-Smart URL Launcher is committed to protecting your privacy. This privacy policy explains our data practices for the Chrome extension.
+Smart URL Launcher is committed to protecting your privacy. This privacy policy explains our data practices for the Chrome and Microsoft Edge extension.
 
 ## Data Collection
 **We do NOT collect, store, or transmit any personal data.**
@@ -18,13 +18,13 @@ Smart URL Launcher operates entirely on your local device and does not:
 ## Data Storage
 The extension stores the following data **locally on your device only**:
 
-### Chrome Sync Storage
+### Browser Sync Storage
 - **URL patterns** you configure in the options page
 - **Pattern settings** (enabled/disabled state)
 
 This data is:
-- Stored using Chrome's built-in sync storage
-- Synchronized across your Chrome browsers (if Chrome sync is enabled)
+- Stored using your browser's built-in sync storage (Chrome Sync or Microsoft Edge Sync)
+- Synchronized across your browsers (if sync is enabled)
 - Never transmitted to our servers or any third party
 - Completely under your control and can be deleted at any time
 
@@ -75,16 +75,16 @@ We may update this privacy policy from time to time. Any changes will be posted 
 ## Data Deletion
 To delete all data stored by the extension:
 
-1. **Delete extension data:**
+1. **Remove the extension:**
    - Right-click the extension icon
-   - Select "Remove from Chrome"
+   - Select "Remove from Chrome" or "Remove from Microsoft Edge"
    - Confirm deletion
 
 2. **Or clear extension storage:**
-   - Go to `chrome://extensions/`
+   - Go to `chrome://extensions/` or `edge://extensions/`
    - Find "Smart URL Launcher"
    - Click "Details"
-   - Click "Clear storage"
+   - Click "Clear storage" or a similar option provided by your browser
 
 ## Your Rights
 You have complete control over your data:
@@ -94,13 +94,11 @@ You have complete control over your data:
 - Export your patterns (by viewing them in options)
 
 ## Open Source
-This extension's source code is available for review, ensuring transparency in our privacy practices.
+This extension's source code is available for review, ensuring transparency in our privacy practices. You can view the code at:
+[https://github.com/tarunvarshney/url-launcher-extension](https://github.com/tarunvarshney/url-launcher-extension)
 
 ## Contact
-If you have questions about this privacy policy or the extension's data practices, please contact:
-
-- **Email:** [your-email@example.com]
-- **GitHub:** [your-github-repo-url]
+If you have questions about this privacy policy or the extension's data practices, please open an issue on our GitHub repository.
 
 ## Consent
 By using Smart URL Launcher, you consent to this privacy policy.
