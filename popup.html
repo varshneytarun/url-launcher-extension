@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Smart URL Launcher</title>
+  <style>
+    body {
+      width: 350px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+    }
+    h1 {
+      font-size: 18px;
+      margin: 0 0 16px 0;
+      color: #333;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    button.secondary {
+      background: #6c757d;
+    }
+    button.secondary:hover {
+      background: #545b62;
+    }
+    #statusMessage {
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div id="statusMessage"></div>
+  <button id="retryClipboard" style="display:none;">Retry</button>
+  <button id="openOptions" class="secondary" style="width:100%;display:none;margin-top:8px;">Configure Patterns</button>
+  <script src="defaults.js"></script>
+    <script src="matching.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

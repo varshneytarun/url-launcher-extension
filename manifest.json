@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Smart URL Launcher",
+  "version": "1.0.0",
+  "description": "Launch URLs based on clipboard patterns like ServiceNow tickets, Jira issues, and more",
+  "permissions": [
+    "clipboardRead",
+    "storage",
+    "tabs",
+    "contextMenus",
+    "offscreen"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

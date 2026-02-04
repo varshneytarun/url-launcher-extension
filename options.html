@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Smart URL Launcher - Options</title>
+  <style>
+    :root {
+      --primary-color: #000000;
+      --primary-hover: #0056b3;
+      --danger-color: #dc3545;
+      --danger-hover: #c82333;
+      --secondary-color: #6c757d;
+      --secondary-hover: #5a6268;
+      --light-gray: #f8f9fa;
+      --medium-gray: #e9ecef;
+      --dark-gray: #6c757d;
+      --text-color: #212529;
+      --border-color: #dee2e6;
+      --background-color: #ffffff;
+      --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --monospace-font: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--light-gray);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--dark-gray);
+      margin-bottom: 2rem;
+    }
+
+    .container {
+      background-color: var(--background-color);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    thead {
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--dark-gray);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.2s ease;
+    }
+
+    tbody tr:hover {
+      background-color: #f1f3f5;
+    }
+
+    td {
+      padding: 1rem;
+      vertical-align: middle;
+    }
+
+    td input[type="text"] {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    td input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+    }
+
+    td input[type="text"].pattern-input {
+      font-family: var(--monospace-font);
+    }
+
+    td input[type="checkbox"] {
+      width: 1.25rem;
+      height: 1.25rem;
+      cursor: pointer;
+    }
+
+    button {
+      font-family: var(--font-family);
+      font-weight: 600;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    #addPattern {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    #addPattern:hover {
+      background-color: var(--primary-hover);
+    }
+
+    button.danger {
+      background-color: var(--danger-color);
+      color: white;
+    }
+    button.danger:hover {
+      background-color: var(--danger-hover);
+    }
+
+    button.secondary {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+    }
+    button.secondary:hover {
+      background-color: var(--secondary-hover);
+    }
+    
+    .controls button {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.875rem;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .header-row h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    th.col-enabled { width: 5%; }
+    th.col-name { width: 15%; }
+    th.col-pattern { width: 10%; }
+    th.col-actions { width: 15%; }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .button-group button {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .button-group button:hover {
+      background-color: var(--secondary-hover);
+    }
+
+    .status-message {
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      display: none;
+      border: 1px solid transparent;
+    }
+
+    .status-message.success {
+      background-color: #d4edda;
+      color: #155724;
+      border-color: #c3e6cb;
+    }
+
+    .status-message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border-color: #f5c6cb;
+    }
+
+    @keyframes highlight-and-fade {
+      0% { background-color: #d4edda; }
+      100% { background-color: transparent; }
+    }
+
+    .row-saved {
+      animation: highlight-and-fade 1.5s ease-out;
+    }
+
+    .example-box {
+      background-color: #f1f3f5;
+      border-left: 4px solid var(--primary-color);
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border-radius: 6px;
+    }
+
+    .example-box h3 {
+      margin: 0 0 1rem 0;
+      font-size: 1.1rem;
+      color: var(--primary-color);
+    }
+
+    .example-box code {
+      background-color: var(--medium-gray);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: var(--monospace-font);
+      font-size: 0.85rem;
+    }
+
+    .example-box ul {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+
+    .example-box li {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 Smart URL Launcher Configuration</h1>
+  <p class="subtitle">Define patterns to automatically launch URLs from clipboard content</p>
+  
+  <div class="container">
+    <div id="statusMessage" class="status-message"></div>
+    
+    <div class="header-row">
+      <h2>URL Patterns</h2>
+      <button id="addPattern">➕ Add Pattern</button>
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th class="col-enabled">Enabled</th>
+          <th class="col-name">Name</th>
+          <th class="col-pattern">Pattern</th>
+          <th>URL Template</th>
+          <th class="col-actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="patternsList"></tbody>
+    </table>
+    
+    <div class="actions">
+      <div class="button-group">
+        <button id="exportPatterns">⏬ Export Configuration</button>
+        <button id="importPatterns">🔃 Import Configuration</button>
+      </div>
+      <button id="resetPatterns" class="danger">Reset to Defaults</button>
+    </div>
+    
+    <div class="example-box">
+      <h3>Pattern Examples & Tips</h3>
+      <ul>
+        <li><strong>Pattern:</strong> Use regular expressions (without delimiters). Example: <code>INC\\d{7,}</code> matches INC followed by 7+ digits</li>
+        <li><strong>URL Template:</strong> Use <code>{value}</code> as placeholder. Example: <code>https://example.com/ticket/{value}</code></li>
+        <li><strong>ServiceNow Incident:</strong> Pattern: <code>INC\\d{7,}</code> → URL: <code>https://your-instance.service-now.com/nav_to.do?uri=incident.do?sysparm_query=number={value}</code></li>
+        <li><strong>Jira:</strong> Pattern: <code>[A-Z]{2,}-\\d+</code> → URL: <code>https://your-domain.atlassian.net/browse/{value}</code></li>
+        <li><strong>GitHub Issue:</strong> Pattern: <code>#\\d+</code> → URL: <code>https://github.com/owner/repo/issues/{value}</code></li>
+      </ul>
+    </div>
+  </div>
+  
+  <script src="defaults.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
