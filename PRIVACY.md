@@ -1,6 +1,6 @@
 # Privacy Policy for Smart URL Launcher
 
-**Last updated:** February 4, 2025
+**Last updated:** February 7, 2026
 
 ## Overview
 Smart URL Launcher is committed to protecting your privacy. This privacy policy explains our data practices for the Chrome and Microsoft Edge extension.
@@ -28,35 +28,50 @@ This data is:
 - Never transmitted to our servers or any third party
 - Completely under your control and can be deleted at any time
 
-## Clipboard Access
-The extension requests clipboard read permission to function properly:
+## Clipboard and Text Access
+The extension requests permission to read clipboard content and access text you select in a webpage. This is essential for its core functionality.
 
-- The extension **only reads your clipboard when you explicitly click the "Read Clipboard & Launch" button**
-- Clipboard contents are read temporarily in memory to match against your configured patterns
-- **Clipboard data is never stored, logged, or transmitted anywhere**
-- The clipboard reading is entirely local and private
+- The extension reads text in two scenarios:
+  1. **From your clipboard** when you click the extension icon.
+  2. **From text you have highlighted** when you use the right-click context menu.
+- This text is processed temporarily in your browser's memory to find matches against your configured patterns.
+- **This data is never stored, logged, or transmitted anywhere.** The process is entirely local and private.
 
 ## Permissions Explained
 
-### clipboardRead
-- **Why needed:** To read clipboard content when you click the button
-- **How used:** Temporarily reads clipboard to match URL patterns
-- **Data retention:** None - data is used immediately and discarded
+### `clipboardRead`
+- **Why it's needed**: To read the content of your clipboard for pattern matching.
+- **How it's used**: The extension reads your clipboard in two cases:
+  1. When you **click the extension icon** in your browser toolbar.
+  2. When you **right-click selected text** and use the context menu option.
+- **Data handling**: The clipboard content is processed entirely in your browser's memory to find matches. It is **never stored, logged, or sent anywhere**.
 
-### storage
-- **Why needed:** To save your custom URL patterns
-- **How used:** Stores pattern configurations locally
-- **Data retention:** Until you delete the extension or clear the data
+### `storage`
+- **Why it's needed**: To save your custom URL patterns and settings.
+- **How it's used**: Your configurations are stored locally using the browser's sync storage, allowing your settings to be consistent across devices where you're logged in.
+- **Data handling**: This data remains on your device or within your browser's sync account and is never accessed by us.
 
-### tabs
-- **Why needed:** To open new browser tabs with matched URLs
-- **How used:** Creates new tabs when patterns match
-- **Data retention:** None
+### `tabs`
+- **Why it's needed**: To open new browser tabs for the URLs that match your patterns.
+- **How it's used**: When a pattern is matched, the extension creates a new tab to navigate to the specified URL.
+- **Data handling**: No data is stored or logged during this process.
 
-### host_permissions: <all_urls>
-- **Why needed:** To open tabs for any configured URL
-- **How used:** Allows opening URLs to your configured systems (ServiceNow, Jira, etc.)
-- **Data retention:** None
+### `contextMenus`
+- **Why it's needed**: To add the "Launch URL for..." option to the right-click menu.
+- **How it's used**: This allows you to launch URLs directly from text you've selected on a webpage, providing a convenient alternative to copying text first.
+- **Data handling**: The selected text is handled the same way as clipboard content—processed in memory and immediately discarded.
+
+### `offscreen`
+- **Why it's needed**: To read the clipboard reliably from the extension's background service worker.
+- **How it's used**: Modern Chrome extensions require a temporary, invisible offscreen document to access the clipboard from a service worker. This allows the extension to read the clipboard without needing a visible popup window every time.
+- **Data handling**: This is a technical requirement for clipboard access and does not involve any extra data collection or storage.
+
+### `host_permissions` (`<all_urls>`)
+- **Why it's needed**: To enable the context menu on all websites and to open tabs for any URL you configure.
+- **How it's used**:
+  1. The `<all_urls>` permission is required for the right-click context menu to appear on any page you visit.
+  2. It also ensures that the extension can open a new tab to any URL you define in your patterns (e.g., `your-instance.service-now.com`, `your-domain.atlassian.net`, etc.).
+- **Data handling**: This permission does **not** allow the extension to read the content of web pages. It is used strictly for adding the context menu and opening tabs.
 
 ## Third-Party Services
 This extension does **NOT** use any third-party services, including:
